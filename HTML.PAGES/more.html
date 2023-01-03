@@ -1,0 +1,136 @@
+<!doctype html>
+
+<html lang="en">
+   <head>
+        <meta charset="utf-8">
+      <title>Jackie Elders - ePortfolio</title>
+        <link rel="stylesheet" href="css/stylesheet.css">
+	<link rel="icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" 
+	crossorigin="anonymous">
+
+<style>
+.myImageLink1 {
+	display: inline-block;
+	width: 150px;
+	height: 100px;
+	background: url('images/cloud1.png') bottom;
+ }
+.myImageLink1:hover {
+	background-position: 0 0;
+}
+.myImageLink2 {
+	display: inline-block;
+	width: 150px;
+	height: 100px;
+	background: url('images/sunset2.png') bottom;
+}
+.myImageLink2:hover {
+	background-position: 0 0;
+}
+.myImageLink3 {
+	display: inline-block;
+	width: 150px;
+	height: 100px;
+	background: url('images/aloe3.png') bottom;
+}
+.myImageLink3:hover {
+	background-position: 0 0;
+}
+.button {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	font: 14px Arial, san-serif;  
+	padding: .5em 2em .55em;
+	border-radius: .5em;  
+	color: #FFFFFF;
+	background: #d4aa00;  
+	background: -webkit-gradient(linear, left top, left bottom, from(#faf6e5), to(#d4aa00));
+	background: -moz-linear-gradient(top,  #faf6e5, #d4aa00);
+}
+.button:hover, active {
+	color: #FFFFFF;
+	background: #faf6e5;  
+	background: -webkit-gradient(linear, left top, left bottom, from(#d4aa00), to(#ac9d93));
+	background: -moz-linear-gradient(top,  #d4aa00, #faf6e5);
+}
+.button:active {
+	position: relative;
+	top: 2px;
+}
+</style>
+
+   </head>
+
+   <body>
+
+     <header>
+       
+
+<nav class="navbar">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <span class="fas fa-bars"></span>
+        </span>
+        <a href="index.html" class="home">Home</a>
+        <ul class="main-nav" id="js-menu">
+            <li>
+                <a href="photos.html" class="nav-links">Photos</a>
+            </li>
+            <li>
+                <a href="slideshow.html" class="nav-links">Slideshow</a>
+            </li>
+            <li>
+                <a href="branding.html" class="nav-links">Branding</a>
+            </li>
+	    <li>
+                <a href="advanced.html" class="nav-links">Advanced</a>
+            </li>
+	    <li>
+                <a href="more.html" class="nav-links">More</a>
+            </li>
+        </ul>
+    </nav>
+	<a href="index.html">
+		<img src="images/logo1.png" alt="Link to home">
+	</a> 
+
+<br>
+<h1>Diasplaying various methods of navigation</h1>
+
+    </header>
+    <main>
+
+<h2>Heading</h2>
+<p></p>
+
+<a class="button" href="https://www.google.com">Google</a>
+<a class="button" href="https://duckduckgo.com">DuckDuckGo</a>
+<a class="button" href="https://www.searchencrypt.com">Search Encrypt</a>
+
+<br><br> 
+<h2>Heading</h2>
+<p><a class="external ext" href="#">link</a> </p>
+<p>
+<a href="photos.html" class="myImageLink1"></a>
+<a href="branding.html" class="myImageLink2"></a>
+<a href="advanced.html" class="myImageLink3"></a>
+</p>
+
+<br><br>
+    </main>
+
+    <footer>
+     <p>&#169; 2019 Jackie Elders</p>
+    </footer>
+<script>
+let mainNav = document.getElementById('js-menu');
+let navBarToggle = document.getElementById('js-navbar-toggle');
+
+navBarToggle.addEventListener('click', function () {
+  mainNav.classList.toggle('active');
+});
+</script>
+    </body>
+</html>

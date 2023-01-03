@@ -1,0 +1,292 @@
+<!doctype html>
+
+<html lang="en">
+   <head>
+        <meta charset="utf-8">
+      		<title>Jackie Elders - ePortfolio</title>
+        <link rel="stylesheet" href="css/stylesheet.css">
+	<link rel="icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" 
+	crossorigin="anonymous">
+
+   </head>
+
+   <body>
+
+     <header>
+       
+
+<nav class="navbar">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <span class="fas fa-bars"></span>
+        </span>
+        <a href="index.html" class="home">Home</a>
+        <ul class="main-nav" id="js-menu">
+            <li>
+                <a href="photos.html" class="nav-links">Photos</a>
+            </li>
+            <li>
+                <a href="slideshow.html" class="nav-links">Slideshow</a>
+            </li>
+            <li>
+                <a href="branding.html" class="nav-links">Branding</a>
+            </li>
+	    <li>
+                <a href="advanced.html" class="nav-links">Advanced</a>
+            </li>
+	    <li>
+                <a href="more.html" class="nav-links">More</a>
+            </li>
+        </ul>
+    </nav>
+
+	<a href="index.html">
+		<img src="images/logo1.png" alt="Link to home">
+	</a> 
+
+<br>
+    </header>
+
+    <main>
+<h1>HTML5 mousable and clickable animation.</h1>
+
+<!-- Kathi, I used HTML5 to code my mouseover and clickable link affect. I could not find any JavaScript code in the cklassroom for it, except the example in the seminar. I hope the thing has the work like it should to recieve points. It is much easier to do with CSS and HTML5. JavaScript involves too much code to get this task done. CSS3 and HTML5 are simple. -->
+
+<a href="index.html">
+<img src="images/cat2.png" onmouseover="this.src='images/cat1.png'" onmouseout="this.src='images/cat2.png'">
+</a>
+<p>If you put your mouse over the image it will animate. If you click the picture it will take you to the home page.</p>
+<br><br>
+
+<!-- Below: change the ID name and reset width & height to no less than 100 and no more than 200 (square). -->
+
+<h2>My clock</h2>
+
+<canvas id="timemaster" width="200" height="200">  
+</canvas>
+
+<script>
+
+<!-- Below: change the ID to match what you placed in the canvas element. -->
+var canvas = document.getElementById("timemaster");  
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * .85;
+	setInterval(myClock, 1000);
+
+function myClock() 
+	{
+  	clockFace(ctx, radius);
+  	clockNumbers(ctx, radius);
+  	tellTime(ctx, radius);
+	}
+
+<!-- In the section below, you may use black *or* white for one of the color choices, -->
+<!-- but one color must match your branding. Use hexcode, not color names. -->
+
+function clockFace(ctx, radius) 
+	{
+  	ctx.beginPath();
+  	ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  	<!-- Below: change color of the fill (clock face background). -->
+  	ctx.fillStyle = '#c2o0ba';  
+  	ctx.fill();
+  	ctx.lineWidth = radius*0.02;
+  	ctx.stroke();
+  	<!-- Below: change hands and outline color to contrast with the color above. -->
+	ctx.strokeStyle = '#dbb339';
+  	ctx.beginPath();
+  	ctx.arc(0, 0, radius*0.08, 0, 2*Math.PI);
+  	ctx.fill();
+  	<!-- Below: change color of the numbers. -->
+  	  
+	}
+
+function clockNumbers(ctx, radius) 
+	{
+  	var position;
+  	var numeral;
+  	<!-- Below: change the font to a sans-serif style, and modify size for readability. -->
+  	ctx.font = radius*0.45 + "px arial"; 
+  	ctx.textAlign = "center";
+  	ctx.textBaseline = "middle";
+  	for(numeral = 1; numeral <= 12; numeral++) 
+	{
+    	position = numeral * Math.PI / 6;
+    	ctx.rotate(position);
+    	ctx.translate(0, -radius*0.80);
+    	ctx.rotate(-position);
+    	ctx.fillText(numeral.toString(), 0, 0);
+    	ctx.rotate(position);
+    	ctx.translate(0, radius*0.80);
+    	ctx.rotate(-position);
+ 	ctx.fillStyle = '#f2f0eb';
+  	}
+	}
+
+function tellTime(ctx, radius)
+	{
+    var myTime = new Date();
+    var hour = myTime.getHours();
+    var minute = myTime.getMinutes();
+    var second = myTime.getSeconds();
+    hour = hour % 12;
+    hour = ( hour*Math.PI/6 ) +
+    	( minute*Math.PI/(6*60) ) +
+    	( second*Math.PI/(360*60) );
+    
+		<!-- Below: make the hour hand short, with a heavier stroke. -->
+      		clockHand(ctx, hour, radius*0.45, radius*0.1);  
+	  	minute = (minute*Math.PI/30)+(second*Math.PI/(30*60));
+		<!-- Below: make the minute hand shorter (but must be longer than the hour hand); use same stroke weight as the hour hand. -->
+      		clockHand(ctx, minute, radius*0.65, radius*0.1); 
+	  	second = (second*Math.PI/30);
+		<!-- Below: shorten the second hand just a little, but it must be longer than the other two hands. Make it thinner than the others. -->
+	  	clockHand(ctx, second, radius*0.90, radius*0.05); 
+	}
+
+function clockHand(ctx, pos, length, width) 
+	{
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+	}
+
+</script>
+<p>I was able to get the clock to operate, but the numbers only appear for a second and the number 1 is missing.</p>
+<br><br>
+
+<h3>My annimation</h3>
+
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="100%" height="100%" 
+   onload = "startup()" >
+
+<script>
+
+<![CDATA[
+
+var xmlns="http://www.w3.org/2000/svg";
+
+var radialGrad;
+var ngradient = 21;
+var stops = new Array();
+var timer;
+var increment = 0.01;
+
+function startup()
+{          
+  radialGrad = document.getElementById("myRadialGradient");
+
+  for (i=0; i<ngradient;i++) {
+    stops[i]=document.getElementById("stops"+i);
+  }
+
+ timer = setInterval("vary()",100);
+}
+
+function vary()
+{  
+  var current_offset;
+  var current_color;
+ 
+  for (i=0; i<ngradient; i++) {   
+    current_offset 
+      = parseFloat(stops[i].getAttributeNS(null,"offset")) + increment;
+<!-- I changed the color from green to red and white to grey. I also changed the null,"stop-color" to red to make the animation stay at it's initail stage repeatedly and it now throws a bright red within the cycle. Very cool effect. -->
+    if(parseFloat(current_offset)>= 1.05) {
+      current_offset = 0.0;
+      if(stops[i].getAttributeNS(null,"stop-color")=="red") {
+        current_color = "red";
+      }
+      else {
+        current_color = "grey";
+      }
+      removeGrad(i);
+      makeNewGrad(current_color,i);     
+    }
+    else { 
+       stops[i].setAttributeNS(null,"offset",current_offset);
+    }   
+  }
+ 
+  function removeGrad(iremove)
+  {  
+    stops[iremove].parentNode.removeChild(stops[iremove]);
+  }
+
+  function makeNewGrad(color,imake)
+  { 
+    stops[imake] = document.createElementNS(xmlns,"stop"); 
+    stops[imake].setAttributeNS(null,"id","stops"+imake);
+    stops[imake].setAttributeNS(null,"offset","0.0");
+    stops[imake].setAttributeNS(null,"stop-color",color);
+    stops[imake].setAttributeNS(null,"stop-opacity","1");
+    radialGrad.insertBefore(stops[imake], radialGrad.firstChild);   
+  } 
+}
+
+]]>
+
+</script> 
+
+<!-- I changed the stop colors from green and white to red and grey. --> 
+
+<radialGradient id="myRadialGradient" fx="50%" fy="50%" r="75%" spreadMethod="reflect"> 
+<stop id="stops0" offset=".0" stop-color="red" stop-opacity="1"/>
+<stop id="stops1" offset=".05" stop-color="grey" stop-opacity="1"/>
+<stop id="stops2" offset=".10" stop-color="red" stop-opacity="1"/> 
+<stop id="stops3" offset=".15" stop-color="grey" stop-opacity="1"/> 
+<stop id="stops4" offset=".20" stop-color="red" stop-opacity="1"/> 
+<stop id="stops5" offset=".25" stop-color="grey" stop-opacity="1"/> 
+<stop id="stops6" offset=".30" stop-color="red" stop-opacity="1"/> 
+<stop id="stops7" offset=".35" stop-color="grey" stop-opacity="1"/> 
+<stop id="stops8" offset=".40" stop-color="red" stop-opacity="1"/> 
+<stop id="stops9" offset=".45" stop-color="grey" stop-opacity="1"/> 
+<stop id="stops10" offset=".50" stop-color="red" stop-opacity="1"/>
+<stop id="stops11" offset=".55" stop-color="grey" stop-opacity="1"/>
+<stop id="stops12" offset=".60" stop-color="red" stop-opacity="1"/> 
+<stop id="stops13" offset=".65" stop-color="grey" stop-opacity="1"/> 
+<stop id="stops14" offset=".70" stop-color="red" stop-opacity="1"/> 
+<stop id="stops15" offset=".75" stop-color="grey" stop-opacity="1"/> 
+<stop id="stops16" offset=".80" stop-color="red" stop-opacity="1"/> 
+<stop id="stops17" offset=".85" stop-color="grey" stop-opacity="1"/> 
+<stop id="stops18" offset=".90" stop-color="red" stop-opacity="1"/> 
+<stop id="stops19" offset=".95" stop-color="grey" stop-opacity="1"/>
+<stop id="stops20" offset="1.0" stop-color="red" stop-opacity="1"/>
+</radialGradient> 
+
+<!-- I changed the width and height from 200 x 200 10 100x 100. I also changed the stroke fill from greem to white -->
+
+<rect id="Rect1" x="30" y="10" width="100" height="100" rx="10" ry="10" style="fill:url(#myRadialGradient); stroke: #ffffff; stroke-width: 3;" /> 
+
+</svg>
+
+<p>This is an open source animation that I have altered.</p>
+<br><br>
+
+
+
+
+    </main>
+
+    <footer>
+     <p>&#169; 2019 Jackie Elders</p>
+    </footer>
+<script>
+let mainNav = document.getElementById('js-menu');
+let navBarToggle = document.getElementById('js-navbar-toggle');
+
+navBarToggle.addEventListener('click', function () {
+  mainNav.classList.toggle('active');
+});
+</script>
+    </body>
+</html>
